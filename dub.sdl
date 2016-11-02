@@ -1,0 +1,35 @@
+name "proped"
+description "A library for reading properties files."
+copyright "Copyright (c) 2015-2016, Milofon Project. All rights reserved."
+authors "Maksim Galanin"
+license "BSD"
+
+configuration "library" {
+    dependency "sdlang-d" version="~>0.10.0"
+    dependency "dyaml" version="~>0.5.3"
+    dependency "vibe-d:data" version="~>0.7.30"
+    
+    targetType "library"
+    targetPath "out"
+}
+
+configuration "bareLibrary" {
+    targetType "library"
+    targetPath "out"
+}
+
+configuration "test" {
+    dependency "sdlang-d" version="~>0.10.0"
+    dependency "dyaml" version="~>0.5.3"
+    dependency "vibe-d:data" version="~>0.7.30-rc.1"
+
+    dependency "d-unit" version="~>0.8.1"
+
+    targetPath "out/test"
+    targetType "executable"
+  
+    versions "UnitTestVersion" 
+
+	sourcePaths "test"
+}
+

@@ -1,0 +1,32 @@
+database {
+    server "localhost"
+    port 3050
+    database "test"
+    username "test"
+    password "key"
+}
+
+service "rest" {
+    host "0.0.0.1"
+    port 3333
+}
+
+service "admin" {
+    host "0.3.0.1"
+    port 3334
+}
+
+service "admin2" {
+    host "0.3.0.1"
+    port 3334
+}
+
+services {
+    admin {
+        host "0.0.0.0"
+    }
+    rest {
+        host "1.1.1.1"
+    }
+}
+

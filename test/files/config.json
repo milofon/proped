@@ -1,0 +1,16 @@
+{
+    "database": {
+        "port": 3050,
+        "server": "localhost",
+        "database": "test",
+        "username": "test"
+    },
+    "service": [{
+        "host": "0.0.0.1",
+        "port": 1234
+    }, {
+        "host": "127.0.0.1",
+        "port": 5689
+    }]
+}
+

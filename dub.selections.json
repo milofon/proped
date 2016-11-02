@@ -1,0 +1,13 @@
+{
+	"fileVersion": 1,
+	"versions": {
+		"d-unit": "0.8.1",
+		"dyaml": "0.5.3",
+		"libinputvisitor": "1.2.2",
+		"sdlang-d": "0.10.0",
+		"taggedalgebraic": "0.10.4",
+		"tinyendian": "0.1.2",
+		"unit-threaded": "0.6.30",
+		"vibe-d": "0.7.30"
+	}
+}
