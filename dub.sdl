@@ -6,7 +6,7 @@ license "BSD"
 
 configuration "library" {
     dependency "sdlang-d" version="~>0.10.0"
-    dependency "dyaml" version="~>0.5.3"
+    dependency "dyaml-dlang-tour" version="~>0.5.5"
     dependency "vibe-d:data" version="~>0.7.30"
     
     targetType "library"
@@ -20,7 +20,7 @@ configuration "bareLibrary" {
 
 configuration "test" {
     dependency "sdlang-d" version="~>0.10.0"
-    dependency "dyaml" version="~>0.5.3"
+    dependency "dyaml-dlang-tour" version="~>0.5.5"
     dependency "vibe-d:data" version="~>0.7.30-rc.1"
 
     dependency "d-unit" version="~>0.8.1"

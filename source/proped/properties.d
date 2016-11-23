@@ -11,7 +11,7 @@ private
 {
     import std.typecons: NullableRef, Nullable;
     import std.array: split, empty;
-    import std.meta: IndexOf, AliasSeq;
+    import std.meta: staticIndexOf, AliasSeq;
     static import std.traits;
 
     import proped.uninode;
@@ -27,7 +27,7 @@ enum DELIMITER_CHAR = '.';
 
 template IsValidType(T)
 {
-    enum IsValidType = IndexOf!(T, Types) >= 0 
+    enum IsValidType = staticIndexOf!(T, Types) >= 0 
         || (std.traits.isArray!T && is(std.traits.ForeachType!T == PropNode))
         || (std.traits.isAssociativeArray!T && is(std.traits.KeyType!T == string) && is(std.traits.ValueType!T == PropNode));
 }
