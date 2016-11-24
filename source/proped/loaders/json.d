@@ -44,7 +44,7 @@ class JSONPropertiesLoader : PropertiesLoader
             return loadPropertiesString(source);
         }
         catch (FileException e)
-            throw new PropertiesException("Error loading properties from a file '" ~ fileName ~ "': " ~ e.msg, e);
+            throw new PropertiesException("Error loading properties from a file '" ~ fileName ~ "':", e);
     }
 
 
@@ -61,7 +61,7 @@ class JSONPropertiesLoader : PropertiesLoader
         try
             root = parseJsonString(data);
         catch (JSONException e)
-            throw new PropertiesException("Error loading properties from a string: " ~ e.msg, e);
+            throw new PropertiesException("Error loading properties from a string:", e);
 
         return toProperties(root);
     }

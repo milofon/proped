@@ -44,7 +44,7 @@ class SDLPropertiesLoader : PropertiesLoader
         try 
             root = parseFile(fileName);
         catch(ParseException e)
-            throw new PropertiesException("Error loading properties from a file '" ~ fileName ~ "': " ~ e.msg, e);
+            throw new PropertiesException("Error loading properties from a file '" ~ fileName ~ "':", e);
 
         return toProperties(root);
     }
@@ -64,7 +64,7 @@ class SDLPropertiesLoader : PropertiesLoader
         try
             root = parseSource(data);
         catch(ParseException e)
-            throw new PropertiesException("Error loading properties from string: " ~ e.msg, e);
+            throw new PropertiesException("Error loading properties from string:", e);
 
         return toProperties(root);
     }

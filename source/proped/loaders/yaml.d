@@ -43,7 +43,7 @@ class YAMLPropertiesLoader : PropertiesLoader
         try 
             root = Loader(fileName).load();
         catch(YAMLException e)
-            throw new PropertiesException("Error loading properties from a file '" ~ fileName ~ "': " ~ e.msg, e);
+            throw new PropertiesException("Error loading properties from a file '" ~ fileName ~ "':", e);
 
         return toProperties(root);
     }
@@ -63,7 +63,7 @@ class YAMLPropertiesLoader : PropertiesLoader
         try
             root = Loader((cast(ubyte[])data).dup).load();
         catch(YAMLException e)
-            throw new PropertiesException("Error loading properties from a string: " ~ e.msg, e);
+            throw new PropertiesException("Error loading properties from a string:", e);
 
         return toProperties(root);
     }

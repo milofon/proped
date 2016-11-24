@@ -23,7 +23,7 @@ class PropertiesException : Exception
 {
     this(string msg, Throwable next = null, string file = __FILE__, size_t line = __LINE__)
     {
-        super(msg, file, line, next);
+        super(msg ~ (next !is null) ? "\n" ~ next.msg : "", file, line, next);
     }
 }
 
