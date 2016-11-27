@@ -85,7 +85,7 @@ struct Properties
         return NullableRef!PropNode.init;
     }
 
-    
+
     /**
      * Checking for the presence of the node in the specified path
      *
@@ -134,8 +134,7 @@ struct Properties
      */
     Nullable!T get(T)(string path) if (IsValidType!T)
     {
-        auto node = findNode(path);
-        return node.isNull ? Nullable!T.init : Nullable!T(node.get.get!T);
+        return doGet!T(findNode(path));
     }
 
 
@@ -147,9 +146,15 @@ struct Properties
      * node.get!int;
      * ---
      */
-    T get(T)() if (IsValidType!T)
+    Nullable!T get(T)() if (IsValidType!T)
     {
-        return head.get!T;
+        return doGet!T(NullableRef!PropNode(&head));
+    }
+
+
+    private Nullable!T doGet(T)(NullableRef!PropNode node)
+    {
+        return node.isNull ? Nullable!T.init : Nullable!T(node.get.get!T);
     }
 
 
@@ -167,7 +172,7 @@ struct Properties
      */
     T getOrElse(T)(T alt) if (IsValidType!T)
     {   
-        return head.hasValue ? head.get!T : alt;
+        return doGetOrElse!T(NullableRef!PropNode(&head), alt);
     }
 
 
@@ -186,7 +191,12 @@ struct Properties
      */
     T getOrElse(T)(string path, T alt) if (IsValidType!T)
     {   
-        auto node = findNode(path);
+        return doGetOrElse!T(findNode(path), alt);
+    }
+
+
+    private T doGetOrElse(T)(NullableRef!PropNode node, T alt) if (IsValidType!T)
+    {
         return node.isNull ? alt : node.get.get!T;
     }
 
@@ -205,8 +215,28 @@ struct Properties
      */
     Properties[] getArray(string path)
     {
+        return doGetArray(findNode(path));
+    }
+
+
+    /**
+     * Get an array of properties on the node
+     *
+     * Example
+     * ---
+     * node.getArray();
+     * ---
+     */
+    Properties[] getArray()
+    {
+        return doGetArray(NullableRef!PropNode(&head));
+    }
+
+
+    private Properties[] doGetArray(NullableRef!PropNode nodeRef)
+    {
         Properties[] result;
-        auto nodeRef = findNode(path);
+
         if (nodeRef.isNull)
             return result;
 
@@ -227,7 +257,6 @@ struct Properties
                 }
             }
         }
-
         return result;
     }
 
@@ -246,8 +275,32 @@ struct Properties
      */
     Properties[string] getObject(string path)
     {
+        return doGetObject(findNode(path));
+    }
+
+
+    /** 
+     * Get an associative array of object properties in the node
+     *
+     * Params:
+     *
+     * path = The path to the desired site
+     *
+     * Example:
+     * ---
+     * getObject();
+     * ---
+     */
+    Properties[string] getObject()
+    {
+        return doGetObject(NullableRef!PropNode(&head));
+    }
+
+
+    private Properties[string] doGetObject(NullableRef!PropNode nodeRef)
+    {
         Properties[string] result;
-        auto nodeRef = findNode(path);
+
         if (nodeRef.isNull)
             return result;
 
@@ -398,6 +451,21 @@ struct Properties
         }
 
         setNode(head, names);
+    }
+
+
+    /**
+     * Installing a new value in the node
+     *
+     * Params:
+     *
+     * val  = New value
+     */
+    void set(T)(T val) if (IsValidType!T)
+    {
+        if (node.isObject || node.isArray)
+            throw new PropertiesException("The node '" ~ path ~ "' is not a simple type");
+        head = val;
     }
 
 
