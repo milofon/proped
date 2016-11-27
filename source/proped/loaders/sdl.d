@@ -11,14 +11,14 @@ version(Have_sdlang_d):
 
 private
 {
-    import std.array: empty;
+    import std.array : empty;
 
     import sdlang;
 
-    import proped.properties: Properties, PropNode;
-    import proped.loader: PropertiesLoader;
-    import proped.exception: PropertiesException;
-    import proped.uninode: isArray, toArray;
+    import proped.properties : Properties, PropNode;
+    import proped.loader : PropertiesLoader;
+    import proped.exception : PropertiesException;
+    import proped.uninode : isArray, toArray;
 }
 
 

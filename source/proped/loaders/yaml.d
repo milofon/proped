@@ -11,13 +11,13 @@ version(Have_dyaml_dlang_tour):
 
 private
 {
-    import dyaml.loader: Loader;
-    import dyaml.node: Node;
-    import dyaml.exception: YAMLException;
+    import dyaml.loader : Loader;
+    import dyaml.node : Node;
+    import dyaml.exception : YAMLException;
 
-    import proped.properties: Properties, PropNode;
-    import proped.loader: PropertiesLoader;
-    import proped.exception: PropertiesException;
+    import proped.properties : Properties, PropNode;
+    import proped.loader : PropertiesLoader;
+    import proped.exception : PropertiesException;
 }
 
 

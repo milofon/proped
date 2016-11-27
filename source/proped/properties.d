@@ -9,9 +9,9 @@ module proped.properties;
 
 private
 {
-    import std.typecons: NullableRef, Nullable;
-    import std.array: split, empty;
-    import std.meta: staticIndexOf, AliasSeq;
+    import std.typecons : NullableRef, Nullable;
+    import std.array : split, empty;
+    import std.meta : staticIndexOf, AliasSeq;
     static import std.traits;
 
     import proped.uninode;

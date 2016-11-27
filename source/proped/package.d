@@ -11,14 +11,15 @@ module proped;
 public
 {
     version(Have_sdlang_d) 
-        import proped.loaders.sdl: SDLPropertiesLoader;
+        import proped.loaders.sdl : SDLPropertiesLoader;
     version(Have_dyaml_dlang_tour) 
-        import proped.loaders.yaml: YAMLPropertiesLoader;
+        import proped.loaders.yaml : YAMLPropertiesLoader;
     version(Have_vibe_d_data) 
-        import proped.loaders.json: JSONPropertiesLoader;
+        import proped.loaders.json : JSONPropertiesLoader;
 
-    import proped.properties: Properties, PropNode;
-    import proped.loader: PropertiesLoader, loadProperties;
-    import proped.exception: PropertiesException, PropertiesNotFoundException;
+    import proped.properties : Properties, PropNode;
+    import proped.loader : PropertiesLoader, loadProperties;
+    import proped.exception : PropertiesException, PropertiesNotFoundException;
+    import proped.uninode : isObject, isArray;
 }
 

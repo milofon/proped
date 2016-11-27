@@ -10,8 +10,8 @@ module proped.uninode;
 
 private
 {
-    import std.typecons: Nullable;
-    import std.variant: Algebraic, This, VariantN;
+    import std.typecons : Nullable;
+    import std.variant : Algebraic, This, VariantN;
 }
 
 

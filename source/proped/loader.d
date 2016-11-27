@@ -9,11 +9,11 @@ module proped.loader;
 
 private
 {
-    import std.path: extension;
-    import std.algorithm.searching: canFind;
+    import std.path : extension;
+    import std.algorithm.searching : canFind;
 
-    import proped.properties: Properties;
-    import proped.exception: PropertiesException;
+    import proped.properties : Properties;
+    import proped.exception : PropertiesException;
 }
 
  

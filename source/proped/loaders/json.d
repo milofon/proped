@@ -11,13 +11,13 @@ version(Have_vibe_d_data):
 
 private
 {
-    import std.file: FileException, readText;
+    import std.file : FileException, readText;
 
     import vibe.data.json;
 
-    import proped.properties: Properties, PropNode;
-    import proped.loader: PropertiesLoader;
-    import proped.exception: PropertiesException;
+    import proped.properties : Properties, PropNode;
+    import proped.loader : PropertiesLoader;
+    import proped.exception : PropertiesException;
 }
 
 

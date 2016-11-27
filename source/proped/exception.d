@@ -9,9 +9,9 @@ module proped.exception;
 
 private
 {
-    import std.format: format;
+    import std.format : format;
 
-    import proped.properties: Properties;
+    import proped.properties : Properties;
 }
 
 
