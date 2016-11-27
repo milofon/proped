@@ -399,5 +399,23 @@ struct Properties
 
         setNode(head, names);
     }
+
+
+    /**
+     * Check property is object
+     */
+    bool isObject() @property
+    {
+        return head.isObject;
+    }
+
+    
+    /**
+     * Check property is array
+     */
+    bool isArray() @property
+    {
+        return head.isArray;
+    }
 }
 

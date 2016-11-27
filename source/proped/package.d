@@ -20,6 +20,5 @@ public
     import proped.properties : Properties, PropNode;
     import proped.loader : PropertiesLoader, loadProperties;
     import proped.exception : PropertiesException, PropertiesNotFoundException;
-    import proped.uninode : isObject, isArray;
 }
 
