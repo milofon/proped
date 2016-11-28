@@ -23,6 +23,7 @@ alias PropNode = UniNode!(Types);
 
 
 enum DELIMITER_CHAR = '.';
+enum DEFAULT_FIELD_NAME = "v";
 
 
 template IsValidType(T)
@@ -253,7 +254,7 @@ struct Properties
                 if (ch.isArray || ch.isObject)
                     result ~= Properties(ch); 
                 else {
-                    result ~= Properties(["name": ch]);
+                    result ~= Properties([DEFAULT_FIELD_NAME: ch]);
                 }
             }
         }
@@ -307,7 +308,7 @@ struct Properties
         PropNode node = nodeRef.get;
         if (!node.isObject)
         {
-            result["name"] = Properties(node);
+            result[DEFAULT_FIELD_NAME] = Properties(node);
         }
         else
         {
@@ -316,7 +317,7 @@ struct Properties
                 if (ch.isArray || ch.isObject)
                     result[k] = Properties(ch); 
                 else
-                    result[k] = Properties(["name": ch]);
+                    result[k] = Properties([DEFAULT_FIELD_NAME: ch]);
             }
         }
 
