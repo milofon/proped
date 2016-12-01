@@ -5,7 +5,7 @@ authors "Maksim Galanin"
 license "BSD"
 
 configuration "library" {
-    dependency "sdlang-d" version="<=0.10.0"
+    dependency "sdlang-d" version="==0.10.0"
     dependency "dyaml-dlang-tour" version="~>0.5.5"
     dependency "vibe-d:data" version="~>0.7.30"
     
@@ -19,7 +19,7 @@ configuration "bareLibrary" {
 }
 
 configuration "test" {
-    dependency "sdlang-d" version="<=0.10.0"
+    dependency "sdlang-d" version="==0.10.0"
     dependency "dyaml-dlang-tour" version="~>0.5.5"
     dependency "vibe-d:data" version="~>0.7.30"
 
