@@ -12,6 +12,7 @@ private
     import std.typecons : NullableRef, Nullable;
     import std.array : split, empty;
     import std.meta : staticIndexOf, AliasSeq;
+    import std.conv : to;
     static import std.traits;
 
     import proped.uninode;
@@ -155,7 +156,15 @@ struct Properties
 
     private Nullable!T doGet(T)(NullableRef!PropNode node)
     {
-        return node.isNull ? Nullable!T.init : Nullable!T(node.get.get!T);
+        if (!node.isNull)
+        {
+            if (node.get.convertsTo!T)
+                return Nullable!T(node.get.get!T);
+            else
+                return Nullable!T.init;
+        }
+        else
+            return Nullable!T.init;
     }
 
 
@@ -198,7 +207,24 @@ struct Properties
 
     private T doGetOrElse(T)(NullableRef!PropNode node, T alt) if (IsValidType!T)
     {
-        return node.isNull ? alt : node.get.get!T;
+        if (!node.isNull)
+        {
+            if (node.get.convertsTo!T)
+                return node.get.get!T;
+            else
+                return alt;
+        }
+        else
+            return alt;
+    }
+
+
+    /**
+     * Check type node
+     */
+    bool isType(T)()
+    {
+        return head.type == typeid(T);
     }
 
 
