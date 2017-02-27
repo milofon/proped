@@ -121,9 +121,16 @@ class SDLPropertiesLoader : PropertiesLoader
                     }
                 return PropNode(map);
             }
-            else if (!tag.values.empty)
+            else if (tag.values.length == 1)
             {
                 return convertVal(tag.values[0]);
+            }
+            else if (tag.values.length > 0)
+            {
+                PropNode[] arr;
+                foreach (Value v; tag.values)
+                    arr ~= convertVal(v);
+                return PropNode(arr);
             }
             else
                 return PropNode(); 
