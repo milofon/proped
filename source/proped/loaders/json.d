@@ -7,19 +7,17 @@
  */
 module proped.loaders.json;
 
-version(Have_vibe_d_data):
 
 private
 {
     import std.file : FileException, readText;
 
-    import vibe.data.json;
+    import std.json;
 
     import proped.properties : Properties, PropNode;
     import proped.loader : PropertiesLoader;
     import proped.exception : PropertiesException;
 }
-
 
 
 /**
@@ -57,9 +55,9 @@ class JSONPropertiesLoader : PropertiesLoader
      */
     Properties loadPropertiesString(string data)
     {
-        Json root;
+        JSONValue root;
         try
-            root = parseJsonString(data);
+            root = parseJSON(data);
         catch (JSONException e)
             throw new PropertiesException("Error loading properties from a string:", e);
 
@@ -67,39 +65,40 @@ class JSONPropertiesLoader : PropertiesLoader
     }
 
 
-    private Properties toProperties(Json root)
+    private Properties toProperties(JSONValue root)
     {
-        PropNode convert(Json node)
+        PropNode convert(JSONValue node)
         {
-            switch(node.type) with (Json)
+            switch(node.type) with (JSON_TYPE)
             {
-                case Type.undefined:
-                case Type.null_:
+                case NULL:
                     return PropNode();
-                case Type.bool_:
-                    return PropNode(node.get!bool);
-                case Type.int_:
-                case Type.bigInt:
-                    return PropNode(node.get!long);
-                case Type.float_:
-                    return PropNode(node.get!double);
-                case Type.string:
-                    return PropNode(node.get!string);
-                case Type.array:
-                    {
-                        PropNode[] arr;
-                        foreach(Json ch; node)
-                            arr ~= convert(ch);
-                        return PropNode(arr);
-                    }
-                case Type.object:
-                    {
-                        PropNode[string] map;
-                        foreach(string key, Json ch; node)
-                            map[key] = convert(ch);
+                case TRUE:
+                    return PropNode(true);
+                case FALSE:
+                    return PropNode(false);
+                case INTEGER:
+                case UINTEGER:
+                    return PropNode(node.integer);
+                case FLOAT:
+                    return PropNode(node.floating);
+                case STRING:
+                    return PropNode(node.str);
+                case ARRAY: 
+                {
+                    PropNode[] arr;
+                    foreach(JSONValue ch; node.array)
+                        arr ~= convert(ch);
+                    return PropNode(arr);
+                }
+                case OBJECT:
+                {
+                    PropNode[string] map;
+                    foreach(string key, JSONValue ch; node.object)
+                        map[key] = convert(ch);
 
-                        return PropNode(map);
-                    }
+                    return PropNode(map);
+                }
                 default:
                     return PropNode();
             }

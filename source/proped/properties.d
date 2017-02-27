@@ -277,11 +277,7 @@ struct Properties
         {
             foreach(PropNode ch; node.get!(PropNode[]))
             {
-                if (ch.isArray || ch.isObject)
-                    result ~= Properties(ch); 
-                else {
-                    result ~= Properties([DEFAULT_FIELD_NAME: ch]);
-                }
+                result ~= Properties(ch); 
             }
         }
         return result;
@@ -339,12 +335,7 @@ struct Properties
         else
         {
             foreach(string k, PropNode ch; node.get!(PropNode[string]))
-            {
-                if (ch.isArray || ch.isObject)
-                    result[k] = Properties(ch); 
-                else
-                    result[k] = Properties([DEFAULT_FIELD_NAME: ch]);
-            }
+                result[k] = Properties(ch); 
         }
 
         return result;

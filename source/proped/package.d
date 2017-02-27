@@ -14,8 +14,8 @@ public
         import proped.loaders.sdl : SDLPropertiesLoader;
     version(Have_dyaml_dlang_tour) 
         import proped.loaders.yaml : YAMLPropertiesLoader;
-    version(Have_vibe_d_data) 
-        import proped.loaders.json : JSONPropertiesLoader;
+
+    import proped.loaders.json : JSONPropertiesLoader;
 
     import proped.properties : Properties, PropNode;
     import proped.loader : PropertiesLoader, loadProperties;
