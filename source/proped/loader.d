@@ -82,3 +82,41 @@ Properties loadProperties(PropertiesLoader[] loaders, string fileName)
     throw new PropertiesException("Not defined loader for " ~ fileName);
 }
 
+
+/**
+ * The function loads the configuration object from a file
+ * Params:
+ *
+ * fileName = File name
+ */
+alias Loader = Properties delegate(string fileName);
+
+
+/**
+ * Create properties loader
+ */
+Loader createPropertiesLoader()
+{
+    PropertiesLoader[] loaders;
+
+    version(Have_sdlang_d) 
+    {
+        import proped.loaders.sdl : SDLPropertiesLoader;
+        loaders ~= new SDLPropertiesLoader();
+    }
+
+    version(Have_dyaml_dlang_tour) 
+    {
+        import proped.loaders.yaml : YAMLPropertiesLoader;
+        loaders ~= new YAMLPropertiesLoader();
+    }
+
+    import proped.loaders.json : JSONPropertiesLoader;
+    loaders ~= new JSONPropertiesLoader();
+
+    return (string fileName) 
+    {
+        return loaders.loadProperties(fileName);
+    };
+}
+
