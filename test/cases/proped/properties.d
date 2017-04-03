@@ -28,7 +28,7 @@ class PropertiesTest
         assertTrue("k" in node);
     }
 
-    @Test
+    @Test 
     void testOperationAssign()
     {
         Properties node = Properties([PropNode("d"), PropNode("s")]);

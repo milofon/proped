@@ -16,9 +16,10 @@ public
         import proped.loaders.yaml : YAMLPropertiesLoader;
 
     import proped.loaders.json : JSONPropertiesLoader;
+    import proped.loaders.properties : PropertiesPropertiesLoader;
 
     import proped.properties : Properties, PropNode;
-    import proped.loader : PropertiesLoader, loadProperties;
+    import proped.loader : PropertiesLoader, loadProperties, Loader;
     import proped.exception : PropertiesException, PropertiesNotFoundException;
 }
 

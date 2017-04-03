@@ -424,6 +424,23 @@ struct Properties
      */
     void set(T)(string path, T val) if (IsValidType!T)
     {
+        set(path, PropNode(val));
+    }
+
+
+    /**
+     * Finding and installing a new value in the specified path
+     *
+     * If the specified path object will be the object or an array, it will be thrown
+     * Also, when a situation of lack of necessaty way, a new item will be created
+     *
+     * Params:
+     *
+     * path = The path to the desired site
+     * val  = New value
+     */
+    void set(string path, PropNode val)
+    {
         auto names = path.split(DELIMITER_CHAR);
 
         PropNode createPath(PropNode terminal, string[] names)
@@ -453,7 +470,7 @@ struct Properties
                     setNode(*chd, names[1..$]);
                 else
                 {
-                    PropNode newNode = createPath(PropNode(val), names[1..$]);
+                    PropNode newNode = createPath(val, names[1..$]);
                     if (node.length == 0)
                     {
                         PropNode[string] map;
@@ -465,7 +482,7 @@ struct Properties
                 }
             }
             else
-                throw new PropertiesException("Failed to set values for the key");
+                throw new PropertiesException("Failed to set values for the key. The parent node for '" ~ name ~ "' is not object");
         }
 
         setNode(head, names);
