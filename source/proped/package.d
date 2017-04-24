@@ -19,7 +19,7 @@ public
     import proped.loaders.properties : PropertiesPropertiesLoader;
 
     import proped.properties : Properties, PropNode;
-    import proped.loader : PropertiesLoader, loadProperties, Loader;
+    import proped.loader : PropertiesLoader, loadProperties, Loader, createPropertiesLoader;
     import proped.exception : PropertiesException, PropertiesNotFoundException;
 }
 

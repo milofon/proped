@@ -114,6 +114,9 @@ Loader createPropertiesLoader()
     import proped.loaders.json : JSONPropertiesLoader;
     loaders ~= new JSONPropertiesLoader();
 
+    import proped.loaders.properties : PropertiesPropertiesLoader;
+    loaders ~= new PropertiesPropertiesLoader();
+
     return (string fileName) 
     {
         return loaders.loadProperties(fileName);
