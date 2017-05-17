@@ -7,7 +7,7 @@
  */
 module proped.loaders.yaml;
 
-version(Have_dyaml_dlang_tour):
+version(Have_dyaml):
 
 private
 {

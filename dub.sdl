@@ -6,7 +6,7 @@ license "BSD"
 
 configuration "library" {
     dependency "sdlang-d" version="~>0.10.1"
-    dependency "dyaml-dlang-tour" version="~>0.6.0"
+    dependency "dyaml" version="~>0.6.1"
     
     targetType "library"
     targetPath "out"
@@ -19,7 +19,7 @@ configuration "bareLibrary" {
 
 configuration "test" {
     dependency "sdlang-d" version="~>0.10.1"
-    dependency "dyaml-dlang-tour" version="~>0.6.0"
+    dependency "dyaml" version="~>0.6.1"
 
     dependency "d-unit" version="~>0.8.1"
 

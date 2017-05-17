@@ -2,7 +2,7 @@
 	"fileVersion": 1,
 	"versions": {
 		"d-unit": "0.8.1",
-		"dyaml-dlang-tour": "0.6.0",
+		"dyaml": "0.6.1",
 		"libinputvisitor": "1.2.2",
 		"sdlang-d": "0.10.1",
 		"taggedalgebraic": "0.10.5",

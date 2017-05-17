@@ -12,7 +12,7 @@ public
 {
     version(Have_sdlang_d) 
         import proped.loaders.sdl : SDLPropertiesLoader;
-    version(Have_dyaml_dlang_tour) 
+    version(Have_dyaml) 
         import proped.loaders.yaml : YAMLPropertiesLoader;
 
     import proped.loaders.json : JSONPropertiesLoader;
