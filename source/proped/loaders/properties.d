@@ -70,12 +70,12 @@ class PropertiesPropertiesLoader : PropertiesLoader
 
         Pair parsePair(string line)
         {
-            ulong keyLen;
+            size_t keyLen;
             char c;
-            ulong valueStart = line.length;
+            size_t valueStart = line.length;
             bool hasSep = false;
             bool precedingBackslash = false;
-            ulong limit = line.length;
+            size_t limit = line.length;
 
             while (keyLen < limit)
             {
