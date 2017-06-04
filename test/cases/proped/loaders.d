@@ -62,7 +62,7 @@ class LoadersTest
         assertEquals(databaseConfig.get!string("server"), "localhost");
 
         assertTrue("port" in databaseConfig);
-        assertEquals(databaseConfig.get!long("port"), 3050);
+        assertEquals(databaseConfig.get!long("port").get, 3050);
 
         assertTrue("database.username" in config);
         assertEquals(config.get!string("database.username"), "test");

@@ -101,7 +101,7 @@ class PropertiesTest
     {
         Properties config2 = loader.loadPropertiesFile("test/files/config-local.sdl");
         config2.set("database.port", 40);
-        assertEquals(config2.get!long("database.port"), 40);
+        assertEquals(config2.get!long("database.port").get, 40);
 
         config2.set("database.sub.sub", "127.0.0.1");
         config2.set("data.sub.sub", "127.0.0.1");
