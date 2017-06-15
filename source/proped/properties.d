@@ -269,17 +269,14 @@ struct Properties
 
         PropNode node = nodeRef.get; 
 
-        if (!node.isArray)
-        {
-            result ~= Properties(node); 
-        }
-        else
+        if (node.isArray)
         {
             foreach(PropNode ch; node.get!(PropNode[]))
-            {
                 result ~= Properties(ch); 
-            }
         }
+        else
+            result ~= Properties(node); 
+
         return result;
     }
 
@@ -485,6 +482,12 @@ struct Properties
                 throw new PropertiesException("Failed to set values for the key. The parent node for '" ~ name ~ "' is not object");
         }
 
+        if (head.hasNull)
+        {
+            PropNode[string] map;
+            head = PropNode(map);
+        }
+
         setNode(head, names);
     }
 
@@ -519,6 +522,24 @@ struct Properties
     bool isArray() @property
     {
         return head.isArray;
+    }
+
+
+    /**
+     * Check property is null
+     */
+    bool isNull() @property
+    {
+        return head.hasNull;
+    }
+
+    /**
+     * Convert value type to object
+     */
+    void valueToObject()
+    {
+        if (!head.isObject)
+            head = PropNode([DEFAULT_FIELD_NAME: head]);
     }
 }
 
