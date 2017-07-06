@@ -1,6 +1,6 @@
 name "proped"
 description "A library for reading properties files."
-copyright "Copyright (c) 2015-2016, Milofon Project. All rights reserved."
+copyright "Copyright (c) 2015-2017, Milofon Project. All rights reserved."
 authors "Maksim Galanin"
 license "BSD"
 
