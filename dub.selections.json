@@ -2,10 +2,10 @@
 	"fileVersion": 1,
 	"versions": {
 		"d-unit": "0.8.1",
-		"dyaml": "0.6.1",
+		"dyaml": "0.6.3",
 		"libinputvisitor": "1.2.2",
 		"sdlang-d": "0.10.1",
-		"taggedalgebraic": "0.10.5",
+		"taggedalgebraic": "0.10.7",
 		"tinyendian": "0.1.2",
 		"unit-threaded": "0.6.36"
 	}
